@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import reportWebVitals from './reportWebVitals';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,6 +13,7 @@ root.render(
     <GoogleOAuthProvider clientId="537035436867-fan8vj3vt36880o87jer0fepgto7dohh.apps.googleusercontent.com">
     <App />
     </GoogleOAuthProvider>
+    <ToastContainer />
   </React.StrictMode>
 );
 

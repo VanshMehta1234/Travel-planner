@@ -30,7 +30,7 @@ const CardContainer = () => {
 
     setTravel(newDataList);
     setNewList(newDataList);
-  }, []);
+  }, []);  
 
   const dayInformation = ['Day 1', 'Day 2', 'Day 3'];
 
@@ -60,7 +60,7 @@ const CardContainer = () => {
             <div className='card-container-page6' key={index}>
               <div className='left-side2-page6'>
                 <div className='day-box-page6'>
-                  <div className='day-info-page6'>Day {day.day}</div>
+                  <div className='day-info-page6'>Day {index+1}</div>
                 </div>
               </div>
 

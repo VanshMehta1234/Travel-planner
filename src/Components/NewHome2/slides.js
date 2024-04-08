@@ -1,5 +1,3 @@
-// slides.js
-
 import image from '../Assets/buddha1.jpeg';
 import image1 from '../Assets/Broken_beach.jpeg';
 import image2 from '../Assets/eiffel.jpeg';
@@ -8,6 +6,14 @@ import image3 from '../Assets/thailand1.jpeg'
 import image4 from '../Assets/bali4.jpeg'
 import image5 from '../Assets/france3.jpeg'
 import image6 from '../Assets/indo.jpeg'
+import image7 from '../Assets/image7.jpg'
+import image8 from '../Assets/image8.jpg'
+import image9 from '../Assets/image9.jpeg';
+import image10 from '../Assets/image10.jpg'
+import image11 from '../Assets/image11.jpg';
+import image12 from '../Assets/image12.jpg'
+import image13 from '../Assets/image13.jpg';
+import image14 from '../Assets/image14.jpg'
 import background from '../Assets/image.jpeg';
 
 const slides = [
@@ -17,6 +23,22 @@ const slides = [
         highlightDescription: 'Buddha temple, Thailand',
         image: image,
         background: background
+    },
+    {
+        country: "SPAIN",
+        description: "Spain, with its vibrant culture and diverse landscapes, beckons travelers to explore the bustling streets of Barcelona, indulge in the rich flavors of Andalusian cuisine, and marvel at the architectural wonders of Madrid. From the sun-drenched beaches of the Costa del Sol to the historic charm of Granada's Alhambra, Spain offers an unforgettable journey filled with passion and fiesta.",
+        highlightDescription: "Sagrada Família, Barcelona",
+        image: image8,
+        background: image7
+    },
+
+
+    {
+        country: "MEXICO",
+        description: "Mexico, land of ancient civilizations and vibrant fiestas, beckons travelers to explore its diverse landscapes and rich cultural heritage. From the majestic pyramids of Teotihuacan to the turquoise waters of the Riviera Maya, Mexico offers an unforgettable adventure filled with history, flavor, and warmth. Immerse yourself in the rhythms of mariachi music, savor the spicy flavors of Mexican cuisine, and discover the magic of this enchanting country.",
+        highlightDescription: "Chichen Itza, Yucatan",
+        image: image9,
+        background: image10
     },
     {
         country: 'THAILAND',
@@ -38,7 +60,9 @@ const slides = [
         highlightDescription: 'Mount Bromo, Indonesia',
         image: image6,
         background: image5
-    }
+    },
+    
+    
 ];
 
 export default slides;

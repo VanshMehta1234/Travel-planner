@@ -9,6 +9,27 @@ const displayImage = (index) => {
 };
 
 
+const handleDeleteMarker = (place) => {
+    const updatedPlaces = places.filter((p) => p !== place);
+
+    if (routingControl) {
+      setRoutingControl(null);
+    }
+
+    if (updatedPlaces.length > 1) {
+      const newRoutingControl = L.Routing.control({
+        waypoints: updatedPlaces.map((p) => L.latLng(p.lat, p.lon)),
+        createMarker: (i, waypoint, n) => {
+          return null;
+        },
+      }).addTo(map);
+
+      setRoutingControl(newRoutingControl);
+    }
+  };
+
+  
+
 <div className="main-back" style={backgroundImageStyle}>
             <Header />
             <main className="main-content">

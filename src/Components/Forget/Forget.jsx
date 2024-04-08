@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import  { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const PasswordResetForm = () => {
   const [token, setToken] = useState('');
@@ -27,9 +28,11 @@ const PasswordResetForm = () => {
         token,
         newPassword,
       });
+      toast.success('Password reset successful');
       nav('/login');
       console.log('Password reset successful:', response.data);
     } catch (error){
+      toast.error('Password reset failed');
       console.error('Password reset failed:', error.response.data);
     }
   };

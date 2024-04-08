@@ -8,7 +8,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import PlaceholderImage from '../ItenoryMap/placeholder.png';
 
-
 const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 const params = {
   q: "",
@@ -16,57 +15,65 @@ const params = {
   addressdetails: "addressdetails",
 };
 
-
 export default function SearchBox(props) {
-  // const { selectPosition, setSelectPosition } = props;
-  const { selectedPlaces, suggestionList, onSelectPlace,setNewPlace,newPlace,handleSaveItenory} = props;
+  const { selectedPlaces, suggestionList, onSelectPlace, setNewPlace, newPlace, handleSaveItenory } = props;
   const [searchText, setSearchText] = useState("");
-  const [listPlace, setListPlace] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const handleInputFocus = (event) => {
+    setShowSuggestions(!showSuggestions);
+  };
+
+  const handleInputChange = (event) => {
+    setNewPlace(event.target.value);
+    if (event.target.value.length === 0) {
+      setShowSuggestions(false); // Hide suggestions when input is empty
+    }
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <OutlinedInput
         style={{ width: "100%" }}
+        placeholder="Click here to search"
         value={newPlace}
-        onChange={(event) => setNewPlace(event.target.value)}
+        onChange={handleInputChange}
+        onFocus={handleInputFocus} // Pass onFocus event handler directly
       />
-      <div>
-        <List component="nav" aria-label="main mailbox folders">
-          {/* Display custom places only when searchText has at least one character */}
-          {newPlace.length > 0 &&
-            suggestionList
+      {showSuggestions && (
+        <div>
+          <List component="nav" aria-label="main mailbox folders">
+            {/* Display custom places only when searchText has at least one character */}
+            {suggestionList
               .filter((place) =>
                 place.display_name.toLowerCase().includes(newPlace.toLowerCase())
               )
               .map((item) => (
-                <div key={item?.place_id}>
+                <div key={item?.place_id} style={{ fontSize: "14px" }}>
                   <ListItem
                     button
-                    onClick={() => {
-                     setNewPlace(item.display_name); 
-      
-                     // Introduce a delay of 1000 milliseconds (1 second) before calling onSelectPlace
-                      setTimeout(() => {
-                        onSelectPlace(item);
-                      }, 1500);
+                    style={{ margin: "4px 8px", fontSize: "12px", backgroundColor: '#F6FDC3' }}
+                    onClick={(event) => {
+                      handleInputFocus(event);
+                      setNewPlace(item.display_name);
+                      onSelectPlace(item);
                     }}
-                    
                   >
                     <ListItemIcon>
                       <img
-                        src={ PlaceholderImage}
+                        src={PlaceholderImage}
                         alt="Placeholder"
-                        style={{ width: 38, height: 38 }}
+                        style={{ width: 24, height: 24 }}
                       />
                     </ListItemIcon>
-                    <ListItemText primary={item?.display_name}/>
+                    <ListItemText primary={item?.display_name} style={{ fontSize: "12px" }} />
                   </ListItem>
-                  <Divider />  
+                  <Divider />
                 </div>
               ))}
-        </List>
-      </div>
+          </List>
+        </div>
+      )}
     </div>
   );
-  
 }

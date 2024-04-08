@@ -1,6 +1,19 @@
-import { createContext } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
-// Create a context with default values
-const favplaceContext = createContext();
+const MyContext = createContext();
 
-export default favplaceContext;
+const MyProvider = ({ children }) => {
+  const [favplaces, setfavplaces] = useState([]);
+
+  return (
+    <MyContext.Provider value={{ favplaces, setfavplaces }}>
+      {children}
+    </MyContext.Provider>
+  );
+};
+
+const useMyContext = () => {
+  return useContext(MyContext);
+};
+
+export { MyProvider, useMyContext, MyContext }; // Add MyContext to the export statement

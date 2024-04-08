@@ -62,8 +62,6 @@ const HomePage = ({ onCreateItinerary }) => {
       console.log('Backend Response:', response);
       latitude = response.data.locations[0].latitude;
       longitude = response.data.locations[0].longitude;
-
-
     } catch (error) {
       console.error('Error fetching details:', error.message);
       // setError('Error fetching details. Please try again.');
